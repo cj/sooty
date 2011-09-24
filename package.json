@@ -1,0 +1,25 @@
+{
+  "name": "sooty",
+  "description": "Framework for writing Campfire bots",
+  "keywords": [
+    "campfire",
+    "chat",
+    "bot",
+    "framework"
+  ],
+  "author": "Tom Bell",
+  "version": "0.0.1",
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/robot.js",
+  "dependencies": {
+    "smores": ">=0.0.3",
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.1.2"
+  },
+  "engines": {
+    "node": "~0.4"
+  }
+}
