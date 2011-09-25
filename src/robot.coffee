@@ -30,7 +30,6 @@ class Robot
     @campfire.room room_id, (err, room) ->
       room.join (response) ->
         robot.rooms.push room
-        room.speak "Hello!", -> {}
         room.listen (message) ->
           robot.dispatch room, message
 
@@ -39,7 +38,6 @@ class Robot
     room = room[0]
     idx = @rooms.indexOf room
     @rooms.splice idx, 1 unless idx is -1
-    room.speak "Goodbye!", ->
-      room.leave -> {}
+    room.leave -> {}
 
 exports.Robot = Robot
