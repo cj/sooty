@@ -16,7 +16,7 @@ class Action
     @callback.call this
 
   speak: (text) ->
-    @room.speak text, -> {}
+    @room.speak text
 
   user: ->
     @message.user_id.toString()

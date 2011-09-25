@@ -38,6 +38,6 @@ class Robot
     room = room[0]
     idx = @rooms.indexOf room
     @rooms.splice idx, 1 unless idx is -1
-    room.leave -> {}
+    room.leave
 
 exports.Robot = Robot
