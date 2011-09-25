@@ -21,7 +21,23 @@ Sooty is a framework for building bots to interact with
 
 ## USAGE
 
-Coming soon...
+The simplest example of using Sooty. It simply listens for the text "Hello"
+and will respond with "Hello there!" when ever someone in the channel says
+it.
+
+```coffeescript
+Robot = require("sooty").Robot
+
+sooty = new Robot ssl: true, token: "your_api_key", account: "your_account_subdomain"
+
+sooty.behaviour ->
+  @hear "Hello", ->
+    @speak "Hello there!"
+
+sooty.connect [ 465901, 456789 ]
+```
+
+A more detailed example coming soon.
 
 ## CONTRIBUTE
 
