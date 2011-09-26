@@ -6,6 +6,7 @@ class Robot
   constructor: (@config) ->
     @matchers = []
     @rooms = []
+    @users = []
 
   behaviour: (callback) ->
     callback.call this
@@ -39,5 +40,12 @@ class Robot
     idx = @rooms.indexOf room
     @rooms.splice idx, 1 unless idx is -1
     room.leave
+
+  username_for: (user_id) ->
+    return @users['#' + user_id].name if @users['#' + user_id]
+    @campfire.user user_id, (err, resp) =>
+      @users['#' + user_id] = resp.user
+      @users['#' + user_id]['name']
+    user_id.toString()
 
 exports.Robot = Robot

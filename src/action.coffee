@@ -3,9 +3,6 @@ class Action
   constructor: (@bot, @callback, @room, @message) ->
     @matches = []
 
-  message: ->
-    @message.body
-
   room: ->
     @message.room_id.toString()
 
@@ -19,7 +16,7 @@ class Action
     @room.speak text
 
   user: ->
-    @message.user_id.toString()
+    return @bot.username_for @message.user_id
 
   user_id: ->
     @message.user_id
