@@ -16,7 +16,7 @@ class Action
     @room.speak text
 
   user: ->
-    return @bot.username_for @message.user_id
+    @bot.username_for @message.user_id
 
   user_id: ->
     @message.user_id
