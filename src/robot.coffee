@@ -6,7 +6,9 @@ class Robot
   constructor: (@config) ->
     @matchers = []
     @rooms = []
-    @users = []
+
+    @users_cache = []
+    @rooms_cache = []
 
   behaviour: (callback) ->
     callback.call this
@@ -42,10 +44,15 @@ class Robot
     room.leave
 
   username_for: (user_id) ->
-    return @users['#' + user_id].name if @users['#' + user_id]
+    return @users_cache['#' + user_id].name if @users_cache['#' + user_id]
     @campfire.user user_id, (err, resp) =>
-      @users['#' + user_id] = resp.user
-      @users['#' + user_id]['name']
+      @users_cache['#' + user_id] = resp.user
     user_id.toString()
+
+  roomname_for: (room_id) ->
+    return @rooms_cache['#' + room_id].name if @rooms_cache['#' + room_id]
+    @campfire.room room_id, (err, room) =>
+      @rooms_cache['#' + room_id] = room
+    room_id.toString()
 
 exports.Robot = Robot
